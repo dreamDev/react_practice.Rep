@@ -1,0 +1,20 @@
+.dialogs {
+  display: flex;
+  justify-content: space-between;
+  &__holder {
+    width: 40%;
+  }
+  &__messages {
+    width: 60%;
+  }
+}
+
+.dialog {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  &__link {
+    padding: 5px 10px;
+  }
+}

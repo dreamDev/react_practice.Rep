@@ -1,0 +1,18 @@
+.navbar {
+  width: 250px;
+  background-color: goldenrod;
+  &__list {
+
+  }
+  &__list-item {
+
+  }
+  &__list-link {
+    color: #000;
+    text-decoration: none;
+    padding: 5px 10px;
+    &.active-navLink {
+      color: #fff;
+    }
+  }
+}

@@ -1,0 +1,9 @@
+.header {
+  padding: 5px 10px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  background: linear-gradient(90deg, #ccc, #000);
+  &__logo {
+    width: 70px;
+  }
+}
