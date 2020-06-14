@@ -1,10 +1,10 @@
 import React from 'react';
 
-const Post = () => {
+const Post = ({ post, likes }) => {
   return (
     <div className="post">
-      post
-      <span>like</span>
+      {post}
+      <span>likes {likes}</span>
     </div>
   )
 }
