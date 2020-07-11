@@ -1,33 +1,35 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
 import './index.scss';
 import App from './App';
-import store from './redux/state';
+import store from './redux/redux-store';
 
-
-const renderEntireTree = state => {
+// После того, как мы подключили react-redux нам не нужно самостоятельно в redux подписываться на ререндер нашего приложения при изменении стейта, за нас теперь это будет делать react-redux в методе connect, при чем ререндерить он будет не все приложение, а конкретные компоненты, в которых увидит изменение стейта. То есть сам connect будет использовать subscribe, но только для того компонента, в котором он определен.
+// const renderEntireTree = () => {
   ReactDOM.render(
     <React.StrictMode>
+      {/* Оборачиваем наше app компонентом BrowserRouter, что бы использовать роутинг внутри app */}
       <BrowserRouter>
-        <App
-          state={state}
-          dispatch={store.dispatch.bind(store)}
-        />
+        {/* Оборачиваем наше app компонентом Provider из react-redux, что бы прокинуть store в app */}
+        <Provider store={store}>
+          <App />
+        </Provider>
       </BrowserRouter>
     </React.StrictMode>,
     document.getElementById('root')
   );
-};
+// };
 
 // Вызываем функцию для первой отрисовки при загрузке страницы.
-renderEntireTree(store.getState())
+// renderEntireTree()
 
-// Вызываем импортированный из state subscribe и передаем ей callback, что бы мы могли делать ререндер из state.js
-store.subscribe(renderEntireTree)
+// Подписываемся на ререндер при изменении стейта
+// store.subscribe(() => renderEntireTree())
 
-
+window.store = store
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
